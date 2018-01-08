@@ -1,0 +1,313 @@
+{
+	"variables": [],
+	"info": {
+		"name": "koa-demo",
+		"_postman_id": "f43d1ee9-d286-e7f8-8111-405e2a9e47bc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "basic say something route",
+			"request": {
+				"url": "http://localhost:3000/saysomething",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Tasks",
+			"request": {
+				"url": "http://localhost:3000/tasks",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task: Feed Dogs",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Feed the dogs.\",\n\t\"urgency\": \"Sometime this evening.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task: Buy Groceries",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Buy Groceries.\",\n\t\"urgency\": \"Sometime this week.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task: Write Code",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Write code\",\n\t\"urgency\": \"High\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task: Eat Food",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Eat Food\",\n\t\"urgency\": \"Moderate\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Tasks Concurrently",
+			"request": {
+				"url": "http://localhost:3000/task/multi",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nameTaskOne\": \"Demonstrate Koa\",\n\t\"urgencyTaskOne\": \"today\",\n\t\"nameTaskTwo\": \"Cut grass\",\n\t\"urgencyTaskTwo\": \"Sometime this week\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task: Feed the dogs.",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Feed the dogs.\",\n\t\"newName\": \"Feed the cat.\",\n\t\"newUrgency\": \"Right... now...\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task: Eat Food",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Eat Food\",\n\t\"newName\": \"Swing kettlebell\",\n\t\"newUrgency\": \"Moderate\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Feed Dogs",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Feed the dogs.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Buy Groceries",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Buy Groceries.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Write Code",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Write code\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Eat Food",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Eat Food\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Swing Kettlebell",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Swing kettlebell\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task: Feed Cat",
+			"request": {
+				"url": "http://localhost:3000/task",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Feed the cat.\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Tasks Concurrently",
+			"request": {
+				"url": "http://localhost:3000/task/multi",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nameTaskOne\": \"Demonstrate Koa\",\n\t\"nameTaskTwo\": \"Cut grass\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
