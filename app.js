@@ -5,7 +5,7 @@ const koa = require("koa");
 const mongoose = require("mongoose");
 const convert = require("koa-convert");
 const bodyParser = require("koa-bodyparser");
-const router = require("koa-simple-router");
+const Router = require("koa-router");
 const error = require("koa-json-error");
 const logger = require("koa-logger");
 const koaRes = require("koa-res");
@@ -47,22 +47,52 @@ app.use(logger());
 app.use(bodyParser());
 // format response as JSON
 app.use(convert(koaRes()));
+
+//json token
+const jwt = require("./jwt");
+
 // configure router
-app.use(
-  router(_ => {
-    _.get("/saysomething", async ctx => {
-      ctx.body = "hello world";
-    }),
-      _.get("/throwerror", async ctx => {
-        throw new Error("Aghh! An error!");
-      }),
-      _.get("/tasks", task.getTasks),
-      _.post("/task", task.createTask),
-      _.put("/task", task.updateTask),
-      _.delete("/task", task.deleteTask),
-      _.post("/task/multi", task.createConcurrentTasks),
-      _.delete("/task/multi", task.deleteConcurrentTasks);
-  })
-);
+//public ROUTES
+const router = new Router();
+router.all("/saysomething", async ctx => {
+  let name = ctx.request.body.name || "World";
+  ctx.body = { message: `Hello ${name}!` };
+});
+router.get("/throwerror", async ctx => {
+  throw new Error("Aghh! An error!");
+});
+
+//get token
+router.post("/auth", async ctx => {
+  let username = ctx.request.body.username;
+  let password = ctx.request.body.password;
+
+  if (username === "user" && password === "pwd") {
+    ctx.body = {
+      token: jwt.issue({
+        user: "user",
+        role: "admin"
+      })
+    };
+  } else {
+    ctx.status = 401;
+    ctx.body = { error: "Invalid login" };
+  }
+});
+
+//SECURED ROUTES
+const securedRouter = new Router();
+// Apply JWT middleware to secured router only
+securedRouter.use(jwt.errorHandler()).use(jwt.jwt());
+
+securedRouter.get("/tasks", task.getTasks);
+securedRouter.post("/task", task.createTask);
+securedRouter.put("/task", task.updateTask);
+securedRouter.delete("/task", task.deleteTask);
+securedRouter.post("/task/multi", task.createConcurrentTasks);
+securedRouter.delete("/task/multi", task.deleteConcurrentTasks);
+
+app.use(router.routes()).use(router.allowedMethods());
+app.use(securedRouter.routes()).use(securedRouter.allowedMethods());
 
 app.listen(3000);
